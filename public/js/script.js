@@ -90,6 +90,20 @@ $(document).ready(function () {
   if (usingWysiwygEditor()) {
     $('#multi_selection_toggle').hide();
   }
+
+  function getUrlParam(paramName) {
+    const reParam = new RegExp('(?:[?&])' + paramName + '=([^&]+)', 'i');
+    const match = window.location.search.match(reParam);
+    return (match && match.length > 1) ? match[1] : null;
+  }
+
+  const workingDir = getUrlParam('working_dir');
+
+  if (workingDir) {
+    console.log('Request present, so jumping to: ', workingDir);
+    goTo(decodeURIComponent(workingDir));
+  }
+
 });
 
 // ======================
