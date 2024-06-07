@@ -277,7 +277,6 @@
             });
         }
 
-
         var sortings = [
             {
                 by: 'alphabetic',
