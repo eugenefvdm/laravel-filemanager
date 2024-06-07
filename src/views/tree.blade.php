@@ -20,7 +20,7 @@
   @foreach($root_folders as $root_folder)
   {{-- We are only interested in shares --}}
     @if($root_folder->name != 'Files')
-    @ray("root_folder", $root_folder);
+    @ray("root_folder", $root_folder)
     <li class="nav-item">
       <a class="nav-link" href="?working_dir=/shares/" data-type="0" data-path="{{ $root_folder->url }}">
         <i class="fa fa-folder fa-fw"></i> {{ $root_folder->name }}
