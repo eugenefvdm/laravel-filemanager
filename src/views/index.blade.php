@@ -196,6 +196,13 @@
     <script src="{{ asset('vendor/laravel-filemanager/js/dropzone.min.js') }}"></script>
     <script>
         var lang = {!! json_encode(trans('laravel-filemanager::lfm')) !!};
+        var isAdmin = {{
+                                    Auth::check()
+                                    &&
+                                    (Auth::user()->hasRole(\App\Enums\Role::Administrator)
+                                    || Auth::user()->hasRole(\App\Enums\Role::SuperAdministrator))
+                                    ? 'true' : 'false'
+                                    }};
         var actions = [
             // {
             //   name: 'use',
@@ -246,6 +253,30 @@
             //     multiple: true
             // },
         ];
+
+        if (isAdmin) {
+            actions.push({
+                name: 'trash',
+                icon: 'trash',
+                label: lang['menu-delete'],
+                multiple: true
+            });
+
+            actions.push({
+                name: 'rename',
+                icon: 'edit',
+                label: lang['menu-rename'],
+                multiple: false
+            });
+
+            actions.push({
+                name: 'move',
+                icon: 'paste',
+                label: lang['menu-move'],
+                multiple: true
+            });
+        }
+
 
         var sortings = [
             {
