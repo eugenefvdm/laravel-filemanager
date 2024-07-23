@@ -284,6 +284,9 @@ class Lfm
      */
     public static function routes()
     {
+        // In our custom version of Laravel File Manager, the routes are handles exactly as it with a prefix in the main application.,
+        return;
+
         $middleware = [ CreateDefaultFolder::class, MultiUser::class ];
         $as = 'unisharp.lfm.';
         $namespace = '\\UniSharp\\LaravelFilemanager\\Controllers\\';
