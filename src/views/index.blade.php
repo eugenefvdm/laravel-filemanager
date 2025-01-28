@@ -82,8 +82,9 @@
                 </div>
             </a>
         </div>
-
-        <div id="fab"></div>
+        @if (Auth::check() && Auth::user()->hasRole(['admin', 'super_admin']))
+            <div id="fab"></div>
+        @endif
     </div>
 
     <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
