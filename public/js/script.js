@@ -461,7 +461,11 @@ function loadItems(page) {
             .click(toggleSelected)
             .dblclick(function (e) {
               if (item.is_file) {
-                use(getSelectedItems());
+                if (usingWysiwygEditor()) {
+                  use(getSelectedItems());
+                } else {
+                  preview([item]); // Show preview for single file
+                }
               } else {
                 goTo(item.url);
               }
